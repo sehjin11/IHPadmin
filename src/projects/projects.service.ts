@@ -19,6 +19,7 @@ export class ProjectsService {
       manager,
       projectSite,
     } = projectDto;
+    const activated: boolean = false;
     const project = this.projectsRepository.create({
       projectCode,
       projectName,
@@ -27,6 +28,7 @@ export class ProjectsService {
       projectPurpose,
       manager,
       projectSite,
+      activated,
     });
     try {
       await this.projectsRepository.save(project);

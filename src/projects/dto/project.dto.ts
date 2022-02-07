@@ -18,4 +18,6 @@ export class ProjectDto {
   projectSite: string;
 
   manager: string;
+
+  activated: boolean;
 }

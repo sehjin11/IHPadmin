@@ -1,7 +1,7 @@
 export class UserDto {
   userName: string;
 
-  projectId: string;
+  projectCode: string;
 
   watchSN: string;
 
