@@ -1,3 +1,4 @@
+import { dateFormat } from 'src/utils/dateformat';
 import {
   BaseEntity,
   Column,
@@ -8,15 +9,26 @@ import {
 } from 'typeorm';
 import { v4 as uuid4 } from 'uuid';
 @Entity()
-export class Users extends BaseEntity {
+export class User extends BaseEntity {
   @PrimaryColumn()
   userCode: string;
 
-  @Column({ nullable: true })
-  userName: string;
+  @BeforeInsert()
+  generateNo() {
+    const date = new Date();
+    dateFormat(date);
+    this.userCode =
+      'USER' + dateFormat(date) + uuid4().replace(/-/g, '').substr(0, 5);
+  }
+
+  @Column()
+  siteNo: string;
 
   @Column({ nullable: true })
-  projectCode: string;
+  projectNo: string;
+
+  @Column({ nullable: true })
+  userName: string;
 
   @Column('text', { array: true })
   watchSN: string[];

@@ -1,23 +1,24 @@
 import { IsDate } from 'class-validator';
+import { AiObject } from '../enum/ai-object.enum';
 
 export class ProjectDto {
-  projectId: string;
+  projectNo: string;
 
   projectCode: string;
 
   projectName: string;
+
+  projectPurpose: string;
+
+  appUse: boolean;
+
+  aiObject: AiObject;
 
   @IsDate()
   startDate: string;
 
   @IsDate()
   endDate: string;
-
-  projectPurpose: string;
-
-  projectSite: string;
-
-  manager: string;
 
   activated: boolean;
 }
