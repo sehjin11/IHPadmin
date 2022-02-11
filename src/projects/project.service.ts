@@ -70,6 +70,7 @@ export class ProjectsService {
 
     try {
       await this.siteRepository.save(site);
+      return site;
     } catch (error) {
       throw new InternalServerErrorException('');
     }
