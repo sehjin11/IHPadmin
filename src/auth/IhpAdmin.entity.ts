@@ -10,4 +10,7 @@ export class IhpAdmin extends BaseEntity {
 
   @Column()
   password: string;
+
+  @Column()
+  adminType: string;
 }

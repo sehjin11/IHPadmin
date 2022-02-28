@@ -13,7 +13,10 @@ import {
 import { AuthService } from './auth.service';
 import { AuthCredentialDto } from './dto/auth-credential.dto';
 import { Request, response, Response } from 'express';
+import { ApiCookieAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Auth')
+@ApiCookieAuth('jwt')
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
@@ -36,7 +39,7 @@ export class AuthController {
     response.cookie('jwt', jwt, { httpOnly: true }); //쿠키 넣음
 
     return {
-      message: 'success',
+      jwt,
     };
   }
 

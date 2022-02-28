@@ -1,3 +1,4 @@
+//날짜 6자리 숫자로 추출(ex.220118)
 function dateFormat(date: Date) {
   let month: any = date.getMonth() + 1;
   let day: any = date.getDate();

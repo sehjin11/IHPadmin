@@ -9,6 +9,7 @@ import {
 
 @EntityRepository(IhpAdmin)
 export class IhpAdminRepository extends Repository<IhpAdmin> {
+  //관리자 생성
   async createAdmin(authCredentialDto: AuthCredentialDto): Promise<object> {
     const { ihpAdminId, password } = authCredentialDto;
 
@@ -16,9 +17,12 @@ export class IhpAdminRepository extends Repository<IhpAdmin> {
     const salt = await bcrypt.genSalt();
     const hashedPw = await bcrypt.hash(password, salt);
 
+    const adminType = 'super';
+
     const admin = this.create({
       ihpAdminId,
       password: hashedPw,
+      adminType,
     });
 
     try {
